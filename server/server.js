@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.json());
@@ -18,6 +18,7 @@ app.post('/fetch-transcript', async (req, res) => {
         const transcript = await fetchTranscript(url);
         res.json(transcript);
     } catch (error) {
+        console.error('Server error:', error);
         res.status(500).json({ error: error.message });
     }
 });
