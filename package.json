@@ -1,13 +1,16 @@
 {
     "name": "youtube-transcript-downloader",
     "version": "1.0.0",
-    "description": "A web application to download YouTube video transcripts",
-    "main": "server/server.js",
     "type": "module",
     "scripts": {
-      "start": "node server/server.js"
+      "start": "node server/server.js",
+      "build": "npm install"
     },
     "dependencies": {
-      "express": "^4.17.1"
+      "express": "^4.17.1",
+      "youtube-transcript-api": "^0.9.0"
+    },
+    "engines": {
+      "node": ">=14.0.0"
     }
   }

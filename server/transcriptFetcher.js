@@ -1,4 +1,6 @@
-import { YoutubeTranscript } from 'youtube-transcript-api';
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const YoutubeTranscript = require('youtube-transcript-api');
 
 export const fetchTranscript = async (url) => {
     try {
@@ -7,7 +9,7 @@ export const fetchTranscript = async (url) => {
             throw new Error('Invalid YouTube URL');
         }
 
-        const transcript = await YoutubeTranscript.fetchTranscript(videoId);
+        const transcript = await YoutubeTranscript.default.fetchTranscript(videoId);
         return transcript.map(item => item.text);
     } catch (error) {
         console.error('Error fetching transcript:', error);
